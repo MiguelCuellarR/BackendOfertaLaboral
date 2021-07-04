@@ -139,8 +139,7 @@ export class UsuarioController {
     })
     credenciales: Credenciales
   ): Promise<object> {
-    let claveCifrada = this.servicioFunciones.CifrarTexto(credenciales.clave);
-    let usuario = await this.usuarioRepository.findOne({where: {nombre_usuario: credenciales.usuario, clave: claveCifrada}});
+    let usuario = await this.usuarioRepository.findOne({where: {nombre_usuario: credenciales.usuario, clave: credenciales.clave}});
     if (usuario) {
       let token = this.servicioSesion.GenerarToken(usuario);
       return {

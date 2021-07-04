@@ -27,8 +27,6 @@ export class Usuario extends Entity {
   })
   clave?: string;
 
-
-
   @belongsTo(() => TipoUsuario)
   tipoUsuarioId: string;
 
